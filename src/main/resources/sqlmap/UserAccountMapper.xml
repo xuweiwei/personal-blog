@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.personal.dao.UserAccountMapper" >
+  <resultMap id="BaseResultMap" type="com.personal.model.UserAccount" >
+    <id column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="INTEGER" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="pinyin" property="pinyin" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="last_ip" property="lastIp" jdbcType="VARCHAR" />
+    <result column="login_count" property="loginCount" jdbcType="INTEGER" />
+    <result column="error_time" property="errorTime" jdbcType="TIMESTAMP" />
+    <result column="error_count" property="errorCount" jdbcType="INTEGER" />
+    <result column="error_ip" property="errorIp" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="email_verify" property="emailVerify" jdbcType="INTEGER" />
+    <result column="mobile_verify" property="mobileVerify" jdbcType="INTEGER" />
+    <result column="source_type" property="sourceType" jdbcType="VARCHAR" />
+    <result column="source_tag" property="sourceTag" jdbcType="VARCHAR" />
+    <result column="invite_code" property="inviteCode" jdbcType="VARCHAR" />
+  </resultMap>
+ <sql id="Base_Column_List" >
+    b_user_account.user_id, b_user_account.user_name, b_user_account.password, b_user_account.user_type, b_user_account.email, b_user_account.mobile, b_user_account.real_name, b_user_account.pinyin, b_user_account.create_time, b_user_account.last_login_time, 
+    b_user_account.last_ip, b_user_account.login_count, b_user_account.error_time, b_user_account.error_count, b_user_account.error_ip, b_user_account.status, b_user_account.email_verify, b_user_account.mobile_verify, 
+    b_user_account.source_type, b_user_account.source_tag, b_user_account.invite_code
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from b_user_account
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from b_user_account
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.personal.model.UserAccount" useGeneratedKeys="true" keyProperty="userId">
+    insert into b_user_account (user_id, user_name, password, 
+      user_type, email, mobile, 
+      real_name, pinyin, create_time, last_login_time, 
+      last_ip, login_count, error_time, 
+      error_count, error_ip, status, 
+      email_verify, mobile_verify, source_type, 
+      source_tag, invite_code)
+    values (#{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{userType,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{realName,jdbcType=VARCHAR}, #{pinyin,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{lastIp,jdbcType=VARCHAR}, #{loginCount,jdbcType=INTEGER}, #{errorTime,jdbcType=TIMESTAMP}, 
+      #{errorCount,jdbcType=INTEGER}, #{errorIp,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{emailVerify,jdbcType=INTEGER}, #{mobileVerify,jdbcType=INTEGER}, #{sourceType,jdbcType=VARCHAR}, 
+      #{sourceTag,jdbcType=VARCHAR}, #{inviteCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.personal.model.UserAccount" useGeneratedKeys="true" keyProperty="userId">
+    insert into b_user_account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+      <if test="pinyin != null" >
+        pinyin,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time,
+      </if>
+      <if test="lastIp != null" >
+        last_ip,
+      </if>
+      <if test="loginCount != null" >
+        login_count,
+      </if>
+      <if test="errorTime != null" >
+        error_time,
+      </if>
+      <if test="errorCount != null" >
+        error_count,
+      </if>
+      <if test="errorIp != null" >
+        error_ip,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="emailVerify != null" >
+        email_verify,
+      </if>
+      <if test="mobileVerify != null" >
+        mobile_verify,
+      </if>
+      <if test="sourceType != null" >
+        source_type,
+      </if>
+      <if test="sourceTag != null" >
+        source_tag,
+      </if>
+      <if test="inviteCode != null" >
+        invite_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null" >
+        #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastIp != null" >
+        #{lastIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginCount != null" >
+        #{loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="errorTime != null" >
+        #{errorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="errorCount != null" >
+        #{errorCount,jdbcType=INTEGER},
+      </if>
+      <if test="errorIp != null" >
+        #{errorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="emailVerify != null" >
+        #{emailVerify,jdbcType=INTEGER},
+      </if>
+      <if test="mobileVerify != null" >
+        #{mobileVerify,jdbcType=INTEGER},
+      </if>
+      <if test="sourceType != null" >
+        #{sourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceTag != null" >
+        #{sourceTag,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteCode != null" >
+        #{inviteCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.personal.model.UserAccount" >
+    update b_user_account
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+       <if test="pinyin != null" >
+        pinyin = #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastIp != null" >
+        last_ip = #{lastIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginCount != null" >
+        login_count = #{loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="errorTime != null" >
+        error_time = #{errorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="errorCount != null" >
+        error_count = #{errorCount,jdbcType=INTEGER},
+      </if>
+      <if test="errorIp != null" >
+        error_ip = #{errorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="emailVerify != null" >
+        email_verify = #{emailVerify,jdbcType=INTEGER},
+      </if>
+      <if test="mobileVerify != null" >
+        mobile_verify = #{mobileVerify,jdbcType=INTEGER},
+      </if>
+      <if test="sourceType != null" >
+        source_type = #{sourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceTag != null" >
+        source_tag = #{sourceTag,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteCode != null" >
+        invite_code = #{inviteCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.personal.model.UserAccount" >
+    update b_user_account
+    set user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      pinyin = #{pinyin,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      last_ip = #{lastIp,jdbcType=VARCHAR},
+      login_count = #{loginCount,jdbcType=INTEGER},
+      error_time = #{errorTime,jdbcType=TIMESTAMP},
+      error_count = #{errorCount,jdbcType=INTEGER},
+      error_ip = #{errorIp,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      email_verify = #{emailVerify,jdbcType=INTEGER},
+      mobile_verify = #{mobileVerify,jdbcType=INTEGER},
+      source_type = #{sourceType,jdbcType=VARCHAR},
+      source_tag = #{sourceTag,jdbcType=VARCHAR},
+      invite_code = #{inviteCode,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+</mapper>
