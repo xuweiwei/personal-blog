@@ -12,16 +12,15 @@ import com.personal.service.UserAccountService;
 @RequestMapping("/user")
 public class UserAccountController {
 	public class UserController {
-		@Autowired
-		public UserAccountService userService;
+	@Autowired
+	public UserAccountService userService;
 
-
-		@RequestMapping(method = RequestMethod.GET)
-		public @ResponseBody
-		String showUser() {
-
-			return "12";
-		}
+	@RequestMapping(value="/send", method = RequestMethod.GET)
+	@ResponseBody
+	public String showUser() {
+			
+		return "12";
+	}
 
 }
 }
