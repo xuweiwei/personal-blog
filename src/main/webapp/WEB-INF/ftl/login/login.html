@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<title>Dax-登录</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="道曼派乐是全新的企业协作云平台，让你以前所未有的方式开展工作，用户可以建立工作空间，与特定的人或组织开展合作，可以将文档、任务、目标、项目等关于工作的信息，连同工作相关的人像社交网络那样组织在一起。派乐使得我们能够更加清晰地了解任务的规模、进度以及人员状态，让我们回归工作的本质要求：高效便捷地获取资源。" />
+		<meta name="keywords" content="道曼派乐,Parox,在线工作,开放,协作,协同,资源,平台,云存储,文件,管理,分享,任务分配,评价" />
+		<meta name="robots" content="道曼派乐,注册">
+		<link rel="stylesheet" href="/css/bootstrap.css" media="screen">
+		<link rel="stylesheet" href="/css/parox-base.css" media="screen">
+		<link rel="stylesheet" href="/css/parox-dashboard.css" media="screen">
+		<link rel="stylesheet" href="/css/parox-home.css" media="screen">
+	</head>
+	<body>
+		<div class="wrap" id="wrap">
+			<div class="container p-t-5-p" id="p-login">
+				<!--login-->
+                <div style="width: 400px; margin: 20px auto;">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <h3 class="f-s-20 text-center m-20">登录Parox</h3>
+                            <form id="login" role="form" >
+                               <!--  <input type="hidden" name="style" value="${style!}">
+                                <input type="hidden" name="processUrl" value="${processUrl!}">
+                                <input type="hidden" name="returnUrl" value="${returnUrl!}"> -->
+                                <div class="f-s-13">
+                                        <p class="text-danger text-center" data-behavior="login-call"></p>
+                                </div>
+                                <!--<#if errors?? && errors?size gt 0>
+                                    <div class="f-s-13">
+                                        <#list errors as error>
+                                            <p class="text-danger text-center" name="error-box">${error}</p>
+                                        </#list>
+                                    </div>
+                                </#if>-->
+                                <div class="form-group m-30 p-relative">
+                                    <label for="username" class="sr-only">邮箱</label>
+                                    <span class="icon-16 icon-16-email p-absolute" style="top: 7px; left:7px;"></span>
+                                    <input class="form-control t-i-2" placeholder="邮箱/用户名" name="username" id="username"  data-behavior="username" type="text"
+                                         autofocus="ture" />
+                                    <div class="verifytip bottom top-right"></div>
+                                </div>
+                                <div class="form-group m-30 p-relative">
+                                    <label for="password" class="sr-only">密码</label>
+                                    <span class="icon-16 icon-16-lock p-absolute" style="top: 7px; left:7px;"></span>
+                                    <input class="form-control t-i-2" placeholder="请输入密码" name="password" id="password" data-behavior="password" type="password" />
+                                    <div class="verifytip bottom top-right"></div>
+                                </div>
+                                <div class="form-group m-t-30 m-l-30 m-r-30">
+                                    <button class="btn btn-primary btn-block" type="submit" data-loading-text="正在登录...">登录</button>
+                                </div>
+                                <div class="form-group m-l-30 m-r-30">
+                                    <div>
+                                        <input checked="checked" id="remember_me" name="remember" type="checkbox" value="1" class="pull-left" />
+                                        自动登录
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+			</div>
+		</div>
+
+        <div id="loading-bar" class="loading-bar"></div>
+	</body>
+</html>

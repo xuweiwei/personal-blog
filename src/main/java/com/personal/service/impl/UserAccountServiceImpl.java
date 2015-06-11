@@ -9,7 +9,8 @@ import com.personal.service.UserAccountService;
 public class UserAccountServiceImpl implements UserAccountService{
 
 	public int insert(UserAccount userAccount) {
-		// TODO Auto-generated method stub
+		
+		
 		return 0;
 	}
 
