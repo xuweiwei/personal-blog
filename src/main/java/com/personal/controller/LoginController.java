@@ -2,6 +2,7 @@ package com.personal.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,10 +36,20 @@ public class LoginController {
 		}
 		if (user != null) {
 			modelMap.put("user", user);
+			request.getSession().setAttribute("loginUser", user);
 			return new ModelAndView("index");
 		}
 		return new ModelAndView("/login/login");
 	}
 
+	@RequestMapping(value="loginOut", method = RequestMethod.GET)
+	public ModelAndView loginOut(HttpServletRequest request, HttpServletResponse response){
+		HttpSession session = (HttpSession) request.getAttribute("loginUser");
+		if(session != null){
+			session.removeAttribute("loginUser");
+		}
+		return new ModelAndView("/login/login");
+		
+	}
 	
 }
